@@ -59,13 +59,136 @@
 // let obj5: {} = true; // OK
 // let obj6: {} = {} // OK
 
+// 声明类
+// class Person {
+//   name: string;
+//   age: number;
+//   constructor(name: string, age: number) {
+//     this.name = name;
+//     this.age = age;
+//   }
+//   sayHi(): void {
+//     console.log(`hello ${this.name}`)
+//     // return `hello ${this.name}`
+//   }
+// }
+// const person = new Person('alan', 18);
+// person.sayHi()
+
+// 函数声明
+// function add(num1: number, num2: number): number {
+//   return num1 + num2;
+// }
+
+// const add1 = function(num1: number, num2: number): number {
+//   return num1 + num2;
+// }
+
+// 接口定义
+// interface Person {
+//   name: string,
+//   age: number
+// }
+
+// // let p1: Person = null;   // 不能将类型“null”分配给类型“Person”
+// let p2: Person = {  // OK
+//   name: 'alan',
+//   age: 18,
+// }
+
+// interface fn {
+//   (msg: string): number;
+// }
+
+// // 定义函数只能用与函数表达式
+// let fn1: fn = function(msg: string): number {
+//   return +msg;
+// }
+
+// interface Iadd {
+//   (num1: number, num2: number, extra?: number): void
+// }
+
+// let add: Iadd = function() {
+  
+// }
 
 
+// 函数声明
+// function fn1(num1: number, num2: number): number {
+//   return num1 + num2;
+// }
 
+// // 函数表达式
+// let add = function(num1: number, num2: number): number {
+//   return num1 + num2;
+// }
 
+// 接口定义函数
+// interface IAdd  {
+//   (num1: number, num2?: number): number  // num2可选参数
+// }
+// // num2设置默认值
+// let add1: IAdd = function(num1: number, num2: number = 2): number {
+//   return num1 + num2
+// }
+// add1(1);
 
+// // 接口定义对象
+// interface IPerson {
+//   name: string;
+//   age?: number;  // 可选参数
+// }
 
+// let p1: IPerson = {
+//   name: 'alan',
+// }
 
+// 剩余参数
+// function add(...nums: number[]): number {
+//   let sum = 0;
+//   for (let i = 0; i < nums.length; i++) {
+//     sum +=nums[i];
+//   }
+//   return sum
+// }
 
+// // (定义)函数重载
+// type Types =  number | string;
 
+// function add(x: number, y: number): number;
+// function add(x: string, y: string): string;
+// function add(x: string, y: number): string;
+// function add(x: number, y: string): string;
+// function add(x: Types, y: Types): Types;
 
+// // 实现
+// function add (x: number, y: number): number {
+//   if(typeof x === 'string' || typeof y === 'string') {
+//     return x.toString() + y.toString();
+//   } else {
+//     return x + y;
+//   }
+// }
+
+// add(1,2)
+// add('1', '2')
+
+// function add3(x, y) {
+//   return x + y
+// }
+
+type types = number | string
+
+function add(x: number, y: number): number;
+function add(x: string, y: string): string;
+
+function add(x: types, y: types) {
+  if(typeof x === 'string' || typeof y === 'string') {
+    return x.toString() + y.toString();
+  }
+  return x + y;
+ }
+ add(1, 2); // 匹配第一个函数声明
+ let result = add('aaa', 'bbb'); // 匹配第二个函数声明
+ result.split('')
